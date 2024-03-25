@@ -1,3 +1,4 @@
+import json
 import os
 os.environ['USE_PYGEOS'] = '0'
 import geopandas as gpd
@@ -7,6 +8,14 @@ import pandas as pd
 peta_kec = gpd.read_file('IDN3.json')
 # point_kec = peta_kec.copy()
 # point_kec['geometry'] = peta_kec['geometry'].centroid
+
+def list_lokasi():
+    cent = peta_kec.copy()
+    cent['geometry'] = peta_kec['geometry'].centroid
+    cent = cent.drop(columns=['GID_3','GID_2','GID_1','GID_0','COUNTRY','NL_NAME_1','NL_NAME_2','NL_NAME_3','VARNAME_3','CC_3','HASC_3','TYPE_3','ENGTYPE_3'])
+    result = cent.to_json()
+    print(cent)
+    return result
 
 def geo_lokasi(lat_src, lon_src, lat_dst, lon_dst, peta_kec=peta_kec):
     ## source lat lon -6.2515958, 106.8415269

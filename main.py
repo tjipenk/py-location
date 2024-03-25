@@ -24,6 +24,23 @@ app.add_middleware(
 async def root():
     return {"message": "Hello World"}
 
+@app.get("/lov_prov")
+async def lov_prov():
+    return {"message": "Hello World"}
+
+@app.get("/lov_kab_kota")
+async def lov_kab_kota():
+    return {"message": "Hello World"}
+
+@app.get("/lov_kec")
+async def lov_kec():
+    return {"message": "Hello World"}
+
+@app.get("/lov_lokasi")
+async def lov_lokasi():
+    return lokasi.list_lokasi()
+
+
 @app.post("/lokasi")
 async def func_lokasi(lat_src, lon_src, lat_dst, lon_dst):
     info_lokasi = lokasi.geo_lokasi(lat_src, lon_src, lat_dst, lon_dst)
