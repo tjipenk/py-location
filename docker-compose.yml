@@ -1,0 +1,28 @@
+version: '3'
+services:
+  db:
+    image: postgis/postgis:16-3.4-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: db_name
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/
+      - database_volume:/var/lib/postgresql/data
+  
+  api:
+    build: 
+      context: .
+      dockerfile: Dockerfile-api
+    container_name: api
+    volumes:
+      - ./:/app
+    ports:
+      - "8080:8080"
+    
+
+volumes:
+  database_volume:
