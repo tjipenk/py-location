@@ -45,17 +45,45 @@ def geo_lokasi(lat_src, lon_src, lat_dst, lon_dst, peta_kec=peta_kec):
     point_dst = point_src.shift() 
 
     jarak = point_src.distance(point_dst)[1]/1000
-    print("Jarak :", round(jarak,2) ," km")
+    # print("Jarak :", round(jarak,2) ," km")
 
     points_within = gpd.sjoin(lokasi_4326, peta_kec, how='inner', predicate='within')
     info_src = points_within
-    info_dst = points_within
-    print("Lokasi Asal :",info_src.NAME_1[0], info_src.NAME_2[0], info_src.NAME_3[0] )
-    print("Lokasi Tujuan :",info_src.NAME_1[1], info_src.NAME_2[1], info_src.NAME_3[1] )
+    #print("Lokasi Asal :",info_src.NAME_1[0], info_src.NAME_2[0], info_src.NAME_3[0] )
+    #print("Lokasi Tujuan :",info_src.NAME_1[1], info_src.NAME_2[1], info_src.NAME_3[1] )
     result = {
         "jarak_km" : round(jarak,2),
         "lokasi_asal" : info_src.NAME_1[0] + ', ' + info_src.NAME_2[0] + ", " + info_src.NAME_3[0],
         "lokasi_tujuan" : info_src.NAME_1[1] + ', ' + info_src.NAME_2[1] + ", " + info_src.NAME_3[1]
+    }
+    return result
+
+
+def get_adm(lat, lon, peta_kec=peta_kec):
+    ## source lat lon -6.2515958, 106.8415269
+    # lat_src = -6.2515958
+    # lon_src = 106.8415269
+
+    ## destination lat lon -6.562744, 106.726071
+    lat_dst = -6.562744
+    lon_dst = 106.726071
+
+    # lokasi = gpd.points_from_xy(lon,lat, crs="EPSG:4326") ## WGS84
+    lokasi = pd.DataFrame(
+        {
+            "keterangan" : ['src','dst'],
+            "lat" : [lat,lat_dst],
+            "lon" : [lon,lon_dst],
+        }
+    )
+
+    points_within = gpd.sjoin(lokasi, peta_kec, how='inner', predicate='within')
+    print("Lokasi :",points_within.NAME_1[0], points_within.NAME_2[0], points_within.NAME_3[0] )
+    result = {
+        "lokasi_asal" : points_within.NAME_1[0] + ', ' + points_within.NAME_2[0] + ", " + points_within.NAME_3[0],
+        "provinsi": points_within.NAME_1[0],
+        "kabupaten": points_within.NAME_2[0],
+        "kecamatan": points_within.NAME_3[0]
     }
     return result
 

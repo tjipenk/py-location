@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 
-import lokasi 
+import lokasi
 
 app = FastAPI()
 
@@ -44,4 +44,9 @@ async def lov_lokasi():
 @app.post("/lokasi")
 async def func_lokasi(lat_src, lon_src, lat_dst, lon_dst):
     info_lokasi = lokasi.geo_lokasi(lat_src, lon_src, lat_dst, lon_dst)
+    return info_lokasi
+
+@app.post("/get_adm")
+async def func_getadm(lat, lon):
+    info_lokasi = lokasi.get_adm(lat, lon)
     return info_lokasi
