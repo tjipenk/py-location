@@ -13,24 +13,32 @@ services:
     - ./db:/docker-entrypoint-initdb.d/
     - database_volume:/var/lib/postgresql/data
 
-  pgadmin4:
-    image: dpage/pgadmin4
-    container_name: pgadmin4
-    ports:
-    - '5050:80'
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin
-      PGADMIN_DEFAULT_PASSWORD: Sucofindo123
-    links:
-    - postgis
+  # pgadmin4:
+  #   image: dpage/pgadmin4
+  #   container_name: pgadmin4
+  #   ports:
+  #   - '5050:80'
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin
+  #     PGADMIN_DEFAULT_PASSWORD: Sucofindo123
+  #   links:
+  #   - postgis
+
   api:
     image: tjipenk/py-location
     build: 
       context: .
       dockerfile: Dockerfile
+    platform: linux/amd64
     container_name: api
+    healthcheck:
+      test: curl --fail http://localhost:8000/health || exit 1
+      interval: 40s
+      timeout: 30s
+      retries: 3
+      start_period: 60s
     volumes:
-    - ./:/app
+    - ./app:/app
     ports:
     - "8000:8000"
     
