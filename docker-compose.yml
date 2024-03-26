@@ -1,0 +1,39 @@
+version: '3'
+services:
+  postgis:
+    image: postgis/postgis:16-3.4-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: db_name
+    ports:
+    - "5432:5432"
+    volumes:
+    - ./db:/docker-entrypoint-initdb.d/
+    - database_volume:/var/lib/postgresql/data
+
+  pgadmin4:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    ports:
+    - '5050:80'
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin
+      PGADMIN_DEFAULT_PASSWORD: Sucofindo123
+    links:
+    - postgis
+  api:
+    image: tjipenk/py-location
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: api
+    volumes:
+    - ./:/app
+    ports:
+    - "8000:8000"
+    
+
+volumes:
+  database_volume:

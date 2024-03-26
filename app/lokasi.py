@@ -65,25 +65,30 @@ def get_adm(lat, lon, peta_kec=peta_kec):
     # lon_src = 106.8415269
 
     ## destination lat lon -6.562744, 106.726071
-    lat_dst = -6.562744
-    lon_dst = 106.726071
+    # lat_dst = -6.562744
+    # lon_dst = 106.726071
 
     # lokasi = gpd.points_from_xy(lon,lat, crs="EPSG:4326") ## WGS84
     lokasi = pd.DataFrame(
         {
-            "keterangan" : ['src','dst'],
-            "lat" : [lat,lat_dst],
-            "lon" : [lon,lon_dst],
+            "keterangan" : ['dst'],
+            "lat" : [lat],
+            "lon" : [lon],
         }
     )
 
-    points_within = gpd.sjoin(lokasi, peta_kec, how='inner', predicate='within')
+    lokasi_4326 = gpd.GeoDataFrame(
+        lokasi, geometry=gpd.points_from_xy(lokasi.lon, lokasi.lat), crs="EPSG:4326"
+    )
+
+    points_within = gpd.sjoin(lokasi_4326, peta_kec, how='inner', predicate='within')
     print("Lokasi :",points_within.NAME_1[0], points_within.NAME_2[0], points_within.NAME_3[0] )
     result = {
         "lokasi_asal" : points_within.NAME_1[0] + ', ' + points_within.NAME_2[0] + ", " + points_within.NAME_3[0],
         "provinsi": points_within.NAME_1[0],
         "kabupaten": points_within.NAME_2[0],
-        "kecamatan": points_within.NAME_3[0]
+        "kecamatan": points_within.NAME_3[0],
+        "kode_area": points_within.CC_3[0]
     }
     return result
 
