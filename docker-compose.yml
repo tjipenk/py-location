@@ -1,17 +1,17 @@
 version: '3'
 services:
-  postgis:
-    image: postgis/postgis:16-3.4-alpine
-    restart: always
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: pass
-      POSTGRES_DB: db_name
-    ports:
-    - "5432:5432"
-    volumes:
-    - ./db:/docker-entrypoint-initdb.d/
-    - database_volume:/var/lib/postgresql/data
+  # postgis:
+  #   image: postgis/postgis:16-3.4-alpine
+  #   restart: always
+  #   environment:
+  #     POSTGRES_USER: ${DB_USER}
+  #     POSTGRES_PASSWORD: ${DB_PASSWORD}
+  #     POSTGRES_DB: ${DB_NAME}
+  #   ports:
+  #   - "5432:5432"
+  #   volumes:
+  #   - ./db:/docker-entrypoint-initdb.d/
+  #   - database_volume:/var/lib/postgresql/data
 
   # pgadmin4:
   #   image: dpage/pgadmin4
@@ -43,5 +43,5 @@ services:
     - "8002:8000"
     
 
-volumes:
-  database_volume:
+# volumes:
+#   database_volume:

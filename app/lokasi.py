@@ -4,20 +4,23 @@ os.environ['USE_PYGEOS'] = '0'
 import geopandas as gpd
 import pandas as pd
 
+# OSRM route API endpoint
+OSRM_API_ENDPOINT = "http://10.10.1.211:5000/route/v1/driving/"
+
 ## geojson file
-peta_kec = gpd.read_file('IDN3.json')
+peta_kec = gpd.read_file('maps/IND_L3.shp')
 # point_kec = peta_kec.copy()
 # point_kec['geometry'] = peta_kec['geometry'].centroid
 
 def list_lokasi():
     cent = peta_kec.copy()
     cent['geometry'] = peta_kec['geometry'].centroid
-    cent = cent.drop(columns=['GID_3','GID_2','GID_1','GID_0','COUNTRY','NL_NAME_1','NL_NAME_2','NL_NAME_3','VARNAME_3','CC_3','HASC_3','TYPE_3','ENGTYPE_3'])
+    cent = cent.drop(columns=['GID_3','GID_2','GID_1','GID_0','COUNTRY','TYPE_3'])
     result = cent.to_json()
-    print(cent)
+    # print(cent)
     return result
 
-def geo_lokasi(lat_src, lon_src, lat_dst, lon_dst, peta_kec=peta_kec):
+def geo_lokasi_ori(lat_src, lon_src, lat_dst, lon_dst, peta_kec=peta_kec):
     ## source lat lon -6.2515958, 106.8415269
     # lat_src = -6.2515958
     # lon_src = 106.8415269
@@ -57,6 +60,50 @@ def geo_lokasi(lat_src, lon_src, lat_dst, lon_dst, peta_kec=peta_kec):
         "lokasi_tujuan" : info_src.NAME_1[1] + ', ' + info_src.NAME_2[1] + ", " + info_src.NAME_3[1]
     }
     return result
+
+def geo_lokasi(lat_src, lon_src, lat_dst, lon_dst, peta_kec=peta_kec):
+    # Construct the OSRM route API request URL
+    coordinates = f"{lon_src},{lat_src};{lon_dst},{lat_dst}"
+    url = f"{OSRM_API_ENDPOINT}{coordinates}?overview=false&alternatives=0"
+
+    # Make the API request
+    response = requests.get(url)
+    response.raise_for_status()  # Raise an exception for non-2xx status codes
+
+    # Parse the response to get the distance
+    data = response.json()
+    distance = data["routes"][0]["distance"]  # Distance in meters
+
+    # Convert distance to kilometers
+    distance_km = distance / 1000
+
+    lokasi = pd.DataFrame(
+        {
+            "keterangan" : ['src','dst'],
+            "lat" : [lat_src, lat_dst],
+            "lon" : [lon_src, lon_dst],
+        }
+    )
+    
+    lokasi_4326 = gpd.GeoDataFrame(
+        lokasi, geometry=gpd.points_from_xy(lokasi.lon, lokasi.lat), crs="EPSG:4326"
+    )
+
+    points_within = gpd.sjoin(lokasi_4326, peta_kec, how='inner', predicate='within')
+    info_src = points_within
+    
+    result = {
+        "jarak_km": round(distance_km, 2),
+        "lokasi_asal": info_src.NAME_1[0] + ', ' + info_src.NAME_2[0] + ", " + info_src.NAME_3[0],
+        "lokasi_tujuan": info_src.NAME_1[1] + ', ' + info_src.NAME_2[1] + ", " + info_src.NAME_3[1]
+    }
+    return result
+
+
+
+
+
+    
 
 
 def get_adm(lat, lon, peta_kec=peta_kec):

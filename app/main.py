@@ -54,7 +54,9 @@ async def root():
 
 @app.get("/lov_prov")
 async def lov_prov():
-    return {"message": "Hello World"}
+    query = "SELECT DISTINCT NAME_1 FROM prov_table"
+    result = await execute_query(query)
+    return [row["NAME_1"] for row in result]
 
 @app.get("/lov_kab_kota")
 async def lov_kab_kota():
