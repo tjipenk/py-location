@@ -57,8 +57,8 @@ def geo_lokasi_ori(lat_src, lon_src, lat_dst, lon_dst, peta_kec=peta_kec):
     #print("Lokasi Tujuan :",info_src.NAME_1[1], info_src.NAME_2[1], info_src.NAME_3[1] )
     result = {
         "jarak_km" : round(jarak,2),
-        "lokasi_asal" : info_src.NAME_1[0] + ', ' + info_src.NAME_2[0] + ", " + info_src.NAME_3[0],
-        "lokasi_tujuan" : info_src.NAME_1[1] + ', ' + info_src.NAME_2[1] + ", " + info_src.NAME_3[1]
+        "lokasi_asal" : info_src.NAME_1[0] + ', ' + info_src.NAME_2[0] + ", " + info_src.NAME_3[0] + ", " + info_src.CC_3[0],
+        "lokasi_tujuan" : info_src.NAME_1[1] + ', ' + info_src.NAME_2[1] + ", " + info_src.NAME_3[1] + ", " + info_src.CC_3[1]
     }
     return result
 
