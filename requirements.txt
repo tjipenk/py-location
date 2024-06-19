@@ -4,3 +4,4 @@ pandas
 pydantic
 asyncpg
 asyncio
+requests
