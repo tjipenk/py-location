@@ -3,6 +3,7 @@ import os
 os.environ['USE_PYGEOS'] = '0'
 import geopandas as gpd
 import pandas as pd
+import requests
 
 # OSRM route API endpoint
 OSRM_API_ENDPOINT = "http://10.10.1.211:5000/route/v1/driving/"
@@ -79,23 +80,31 @@ def geo_lokasi(lat_src, lon_src, lat_dst, lon_dst, peta_kec=peta_kec):
 
     lokasi = pd.DataFrame(
         {
-            "keterangan" : ['src','dst'],
-            "lat" : [lat_src, lat_dst],
-            "lon" : [lon_src, lon_dst],
+            "keterangan": ["src", "dst"],
+            "lat": [lat_src, lat_dst],
+            "lon": [lon_src, lon_dst],
         }
     )
-    
+
     lokasi_4326 = gpd.GeoDataFrame(
         lokasi, geometry=gpd.points_from_xy(lokasi.lon, lokasi.lat), crs="EPSG:4326"
     )
 
-    points_within = gpd.sjoin(lokasi_4326, peta_kec, how='inner', predicate='within')
+    points_within = gpd.sjoin(lokasi_4326, peta_kec, how="inner", predicate="within")
     info_src = points_within
-    
+
     result = {
         "jarak_km": round(distance_km, 2),
-        "lokasi_asal": info_src.NAME_1[0] + ', ' + info_src.NAME_2[0] + ", " + info_src.NAME_3[0],
-        "lokasi_tujuan": info_src.NAME_1[1] + ', ' + info_src.NAME_2[1] + ", " + info_src.NAME_3[1]
+        "lokasi_asal": info_src.NAME_1[0]
+        + ", "
+        + info_src.NAME_2[0]
+        + ", "
+        + info_src.NAME_3[0],
+        "lokasi_tujuan": info_src.NAME_1[1]
+        + ", "
+        + info_src.NAME_2[1]
+        + ", "
+        + info_src.NAME_3[1],
     }
     return result
 
