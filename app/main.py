@@ -4,6 +4,7 @@ from pydantic import BaseModel
 # import uvicorn
 
 import lokasi
+from lokasi import peta_kec
 
 app = FastAPI()
 
@@ -54,21 +55,31 @@ async def root():
 
 @app.get("/lov_prov")
 async def lov_prov():
-    query = "SELECT DISTINCT NAME_1 FROM prov_table"
-    result = await execute_query(query)
-    return [row["NAME_1"] for row in result]
+    # Get the unique list of province names and trimmed CC_3 codes from the peta_kec GeoDataFrame
+    provinces = peta_kec[['NAME_1', 'CC_3']].drop_duplicates('NAME_1').values.tolist()
+    provinces = [{'name': name, 'code': code[:2]} for name, code in provinces]
+    return provinces
+
 
 @app.get("/lov_kab_kota")
 async def lov_kab_kota():
-    return {"message": "Hello World"}
+    # Get the unique list of kabupaten/kota names and trimmed CC_3 codes from the peta_kec GeoDataFrame
+    kab_kota = peta_kec[['NAME_2', 'CC_3']].drop_duplicates('NAME_2').values.tolist()
+    kab_kota = [{'name': name, 'code': code[:4]} for name, code in kab_kota]
+    return kab_kota
 
 @app.get("/lov_kec")
 async def lov_kec():
-    return {"message": "Hello World"}
+    # Get the unique list of kecamatan names and trimmed CC_3 codes from the peta_kec GeoDataFrame
+    kecamatan = peta_kec[['NAME_3', 'CC_3']].drop_duplicates('NAME_3').values.tolist()
+    kecamatan = [{'name':name, 'code': code} for name, code in kecamatan]
+    return kecamatan
 
 @app.get("/lov_lokasi")
 async def lov_lokasi():
-    return lokasi.list_lokasi()
+    lokasi = peta_kec[['CC_3','NAME_1','NAME_2','NAME_3']]
+    lokasi = [[code, prov, kab, kec ] for code, prov, kab, kec in lokasi]
+    return {"lokasi": lokasi}
 
 
 @app.post("/lokasi")

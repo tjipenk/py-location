@@ -1,0 +1,241 @@
+[
+    {
+      "name": "Aceh",
+      "code": "11",
+      "capital": "Banda Aceh",
+      "population": 5316346,
+      "area": 57956.0
+    },
+    {
+      "name": "Sumatera Utara",
+      "code": "12",
+      "capital": "Medan",
+      "population": 14439155,
+      "area": 72981.23
+    },
+    {
+      "name": "Sumatera Barat",
+      "code": "13",
+      "capital": "Padang",
+      "population": 5379924,
+      "area": 42012.89
+    },
+    {
+      "name": "Riau",
+      "code": "14",
+      "capital": "Pekanbaru",
+      "population": 6900475,
+      "area": 87023.66
+    },
+    {
+      "name": "Jambi",
+      "code": "15",
+      "capital": "Jambi",
+      "population": 3570272,
+      "area": 50058.16
+    },
+    {
+      "name": "Sumatera Selatan",
+      "code": "16",
+      "capital": "Palembang",
+      "population": 8480618,
+      "area": 91592.43
+    },
+    {
+      "name": "Bengkulu",
+      "code": "17",
+      "capital": "Bengkulu",
+      "population": 1970995,
+      "area": 19919.33
+    },
+    {
+      "name": "Lampung",
+      "code": "18",
+      "capital": "Bandar Lampung",
+      "population": 8469409,
+      "area": 34623.8
+    },
+    {
+      "name": "Kepulauan Bangka Belitung",
+      "code": "19",
+      "capital": "Pangkal Pinang",
+      "population": 1437396,
+      "area": 16424.06
+    },
+    {
+      "name": "Kepulauan Riau",
+      "code": "21",
+      "capital": "Tanjung Pinang",
+      "population": 2049141,
+      "area": 8201.78
+    },
+    {
+      "name": "DKI Jakarta",
+      "code": "31",
+      "capital": "Jakarta",
+      "population": 10562088,
+      "area": 661.52
+    },
+    {
+      "name": "Jawa Barat",
+      "code": "32",
+      "capital": "Bandung",
+      "population": 49316711,
+      "area": 37632.72
+    },
+    {
+      "name": "Jawa Tengah",
+      "code": "33",
+      "capital": "Semarang",
+      "population": 34257865,
+      "area": 32544.12
+    },
+    {
+      "name": "DI Yogyakarta",
+      "code": "34",
+      "capital": "Yogyakarta",
+      "population": 3720912,
+      "area": 3185.8
+    },
+    {
+      "name": "Jawa Timur",
+      "code": "35",
+      "capital": "Surabaya",
+      "population": 39292972,
+      "area": 47922.0
+    },
+    {
+      "name": "Banten",
+      "code": "36",
+      "capital": "Serang",
+      "population": 12547938,
+      "area": 9107.82
+    },
+    {
+      "name": "Bali",
+      "code": "51",
+      "capital": "Denpasar",
+      "population": 4317404,
+      "area": 5636.66
+    },
+    {
+      "name": "Nusa Tenggara Barat",
+      "code": "52",
+      "capital": "Mataram",
+      "population": 5109438,
+      "area": 20153.15
+    },
+    {
+      "name": "Nusa Tenggara Timur",
+      "code": "53",
+      "capital": "Kupang",
+      "population": 5325712,
+      "area": 47349.9
+    },
+    {
+      "name": "Kalimantan Barat",
+      "code": "61",
+      "capital": "Pontianak",
+      "population": 5244438,
+      "area": 147307.0
+    },
+    {
+      "name": "Kalimantan Tengah",
+      "code": "62",
+      "capital": "Palangka Raya",
+      "population": 2635009,
+      "area": 153564.5
+    },
+    {
+      "name": "Kalimantan Selatan",
+      "code": "63",
+      "capital": "Banjarmasin",
+      "population": 4116239,
+      "area": 37530.52
+    },
+    {
+      "name": "Kalimantan Timur",
+      "code": "64",
+      "capital": "Samarinda",
+      "population": 3766072,
+      "area": 127346.92
+    },
+    {
+      "name": "Kalimantan Utara",
+      "code": "65",
+      "capital": "Tanjung Selor",
+      "population": 677384,
+      "area": 72567.0
+    },
+    {
+      "name": "Sulawesi Utara",
+      "code": "71",
+      "capital": "Manado",
+      "population": 2486722,
+      "area": 13851.64
+    },
+    {
+      "name": "Sulawesi Tengah",
+      "code": "72",
+      "capital": "Palu",
+      "population": 2965677,
+      "area": 61841.29
+    },
+    {
+      "name": "Sulawesi Selatan",
+      "code": "73",
+      "capital": "Makassar",
+      "population": 8771832,
+      "area": 46717.48
+    },
+    {
+      "name": "Sulawesi Tenggara",
+      "code": "74",
+      "capital": "Kendari",
+      "population": 2570591,
+      "area": 38067.7
+    },
+    {
+      "name": "Gorontalo",
+      "code": "75",
+      "capital": "Gorontalo",
+      "population": 1211240,
+      "area": 11257.07
+    },
+    {
+      "name": "Sulawesi Barat",
+      "code": "76",
+      "capital": "Mamuju",
+      "population": 1354906,
+      "area": 16787.18
+    },
+    {
+      "name": "Maluku",
+      "code": "81",
+      "capital": "Ambon",
+      "population": 1725789,
+      "area": 54185.0
+    },
+    {
+      "name": "Maluku Utara",
+      "code": "82",
+      "capital": "Sofifi",
+      "population": 1200368,
+      "area": 31984.5
+    },
+    {
+      "name": "Papua Barat",
+      "code": "91",
+      "capital": "Manokwari",
+      "population": 1098211,
+      "area": 97024.27
+    },
+    {
+      "name": "Papua",
+      "code": "92",
+      "capital": "Jayapura",
+      "population": 4303932,
+      "area": 319036.05
+    }
+  ]
+  
