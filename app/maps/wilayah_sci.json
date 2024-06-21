@@ -1,0 +1,162 @@
+[
+  {
+    "LOKASI": "NUSA TENGGARA BARAT",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "NUSA TENGGARA TIMUR",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "SULAWESI UTARA",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "SULAWESI TENGAH",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "SULAWESI SELATAN",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "SULAWESI TENGGARA",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "GORONTALO",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "SULAWESI BARAT",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "MALUKU",
+    "KODE_WILAYAH": "W1"
+  },
+  {
+    "LOKASI": "MALUKU UTARA",
+    "KODE_WILAYAH": "W1"
+  },
+  {
+    "LOKASI": "PAPUA BARAT",
+    "KODE_WILAYAH": "W1"
+  },
+  {
+    "LOKASI": "PAPUA",
+    "KODE_WILAYAH": "W1"
+  },
+  {
+    "LOKASI": "PAPUA TENGAH",
+    "KODE_WILAYAH": "W1"
+  },
+  {
+    "LOKASI": "KEPULAUAN RIAU",
+    "KODE_WILAYAH": "W2"
+  },
+  {
+    "LOKASI": "KALIMANTAN BARAT",
+    "KODE_WILAYAH": "W2"
+  },
+  {
+    "LOKASI": "KALIMANTAN TENGAH",
+    "KODE_WILAYAH": "W2"
+  },
+  {
+    "LOKASI": "KALIMANTAN SELATAN",
+    "KODE_WILAYAH": "W2"
+  },
+  {
+    "LOKASI": "KALIMANTAN TIMUR",
+    "KODE_WILAYAH": "W2"
+  },
+  {
+    "LOKASI": "KALIMANTAN UTARA",
+    "KODE_WILAYAH": "W2"
+  },
+  {
+    "LOKASI": "SUMATERA UTARA",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "SUMATERA BARAT",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "JAMBI",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "SUMATERA SELATAN",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "BENGKULU",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "LAMPUNG",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "KEPULAUAN BANGKA BELITUNG",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "JABODETABEK",
+    "KODE_WILAYAH": "W2"
+  },
+  {
+    "LOKASI": "JAWA BARAT",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "JAWA TENGAH",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "DI YOGYAKARTA",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "JAWA TIMUR",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "BANTEN",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "BALI",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "RIAU",
+    "KODE_WILAYAH": "W3"
+  },
+  {
+    "LOKASI": "ASIA (KECUALI JEPANG)",
+    "KODE_WILAYAH": "N1"
+  },
+  {
+    "LOKASI": "AUSTRALIA",
+    "KODE_WILAYAH": "N1"
+  },
+  {
+    "LOKASI": "JEPANG",
+    "KODE_WILAYAH": "N2"
+  },
+  {
+    "LOKASI": "EROPA",
+    "KODE_WILAYAH": "N2"
+  },
+  {
+    "LOKASI": "AMERIKA",
+    "KODE_WILAYAH": "N2"
+  },
+  {
+    "LOKASI": "AFRIKA",
+    "KODE_WILAYAH": "N2"
+  }
+]

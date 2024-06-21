@@ -2,9 +2,15 @@ from fastapi import FastAPI, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 # import uvicorn
-
+import json
 import lokasi
 from lokasi import peta_kec
+
+# Load the wilayah_sci.json data
+with open('maps/wilayah_sci.json', 'r') as f:
+    wilayah_sci = json.load(f)
+
+wilayah_mapping = {data['LOKASI']: data['KODE_WILAYAH'] for data in wilayah_sci}
 
 app = FastAPI()
 
@@ -77,11 +83,20 @@ async def lov_kec():
 
 @app.get("/lov_lokasi")
 async def lov_lokasi():
-    # lokasi = peta_kec[['CC_3','NAME_1','NAME_2','NAME_3']]
-    # lokasi = [[code, prov, kab, kec ] for code, prov, kab, kec in lokasi]
-    return {"lokasi": peta_kec[['CC_3','NAME_1','NAME_2','NAME_3']].values.tolist()}
-
-
+    lokasi = peta_kec[['CC_3','NAME_1','NAME_2','NAME_3']]
+    lokasi = lokasi.values.tolist()
+    lokasi_with_keys = []
+    for row in lokasi:
+        kode_area, provinsi, kabupaten, kecamatan = row
+        kode_wilayah = wilayah_mapping.get(provinsi, 'W3')  # Default to 'W3' if not found
+        lokasi_with_keys.append({
+            'kode_area': kode_area,
+            'provinsi': provinsi,
+            'kabupaten': kabupaten,
+            'kecamatan': kecamatan,
+            'kode_wilayah': kode_wilayah
+        })
+    return {"lokasi": lokasi_with_keys}
 
 @app.post("/lokasi")
 async def func_lokasi(lat_src, lon_src, lat_dst, lon_dst):
