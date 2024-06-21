@@ -116,10 +116,6 @@ def geo_lokasi(lat_src, lon_src, lat_dst, lon_dst, peta_kec=peta_kec):
 
 
 
-
-    
-
-
 def get_adm(lat, lon, peta_kec=peta_kec):
     ## source lat lon -6.2515958, 106.8415269
     # lat_src = -6.2515958

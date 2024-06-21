@@ -77,9 +77,10 @@ async def lov_kec():
 
 @app.get("/lov_lokasi")
 async def lov_lokasi():
-    lokasi = peta_kec[['CC_3','NAME_1','NAME_2','NAME_3']]
-    lokasi = [[code, prov, kab, kec ] for code, prov, kab, kec in lokasi]
-    return {"lokasi": lokasi}
+    # lokasi = peta_kec[['CC_3','NAME_1','NAME_2','NAME_3']]
+    # lokasi = [[code, prov, kab, kec ] for code, prov, kab, kec in lokasi]
+    return {"lokasi": peta_kec[['CC_3','NAME_1','NAME_2','NAME_3']].values.tolist()}
+
 
 
 @app.post("/lokasi")
